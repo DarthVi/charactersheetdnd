@@ -91,6 +91,8 @@ public class Menu {
 		
 		//set robe by classe
 		PGBuilder.setStuffByClasse(input, pg);
+		//set robe by background
+		PGBuilder.setBackground(input, pg);
 		//altri set indipendenti dalla classe
 		PGBuilder.setInitiativeAndCA(pg);
 		

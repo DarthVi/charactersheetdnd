@@ -191,12 +191,12 @@ public class Personaggio implements CustomSerializable {
 		}
 	}
 	
-	public Abilita[] getAbilitaConCompetenza() {
-		return (Abilita[]) abilita.stream().filter(abPair -> abPair.isCompetente()).toArray();
+	public List<Abilita> getAbilitaConCompetenza() {
+		return abilita.stream().filter(abPair -> abPair.isCompetente()).map(abPair -> abPair.getFirst()).toList();
 	}
 	
-	public Abilita[] getAbilitaSenzaCompetenza() {
-		return (Abilita[]) abilita.stream().filter(abPair -> !abPair.isCompetente()).toArray();
+	public List<Abilita> getAbilitaSenzaCompetenza() {
+		return abilita.stream().filter(abPair -> !abPair.isCompetente()).map(abPair -> abPair.getFirst()).toList();
 	}
 	
 	public void setAbilitaAggiungendoCompetenza(Abilita abilita) {

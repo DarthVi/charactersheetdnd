@@ -214,8 +214,8 @@ public class PGBuilder {
 		//abilita dal background
 		
 		//abilita gia' presenti nel pg con e senza competenza
-		List<Abilita> abilitaConCompetenza = Arrays.asList(pg.getAbilitaConCompetenza());
-		List<String> abilitaSenzaCompetenza = new ArrayList<>(Arrays.asList(pg.getAbilitaSenzaCompetenza())).stream().map(a -> a.getDesc()).toList();
+		List<Abilita> abilitaConCompetenza = pg.getAbilitaConCompetenza();
+		List<String> abilitaSenzaCompetenza = new ArrayList<>(pg.getAbilitaSenzaCompetenza().stream().map(a -> a.getDesc()).toList());
 		
 		for(int i=0; i<numAbil; i++) {
 			if(abilitaConCompetenza.contains(background.getAbilita()[i]))
