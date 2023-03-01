@@ -1,7 +1,6 @@
 package classi;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class DiceRoller {
@@ -10,7 +9,6 @@ public class DiceRoller {
 	    return random.nextInt(faces) + 1;
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
 	public static int[] chooseArrayWithHighestScore() {
 		int[][] a = new int[3][6];
 		

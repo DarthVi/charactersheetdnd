@@ -3,10 +3,12 @@ package classi;
 public class Pair<T, U> {
 	private T first;
 	private U second;
+	boolean competente;
 	
 	public Pair(T first, U second) {
 		this.first = first;
 		this.second = second;
+		this.competente = false;
 	}
 
 	public T getFirst() {
@@ -23,6 +25,14 @@ public class Pair<T, U> {
 
 	public void setSecond(U second) {
 		this.second = second;
+	}
+	
+	public void setCompetente(boolean competenza) {
+		this.competente = competenza;
+	}
+	
+	public boolean isCompetente() {
+		return competente;
 	}
 
 	@Override

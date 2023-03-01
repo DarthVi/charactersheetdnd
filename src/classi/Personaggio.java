@@ -111,6 +111,10 @@ public class Personaggio {
 		this.dadiVita = dado;
 	}
 	
+	public String getDadiVita() {
+		return this.dadiVita;
+	}
+	
 	public void setLivello(int livello) {
 		this.livello = livello;
 		if(livello <=4)
@@ -141,7 +145,10 @@ public class Personaggio {
 		for(Abilita abl : Abilita.values()) {
 			int index = this.abilita.indexOf(new Pair<Abilita, Integer>(abl, 0));
 			if(abilList.contains(abl))
+			{
 				this.abilita.get(index).setSecond(getModifier(abl.getStat()) + bonusCompetenza);
+				this.abilita.get(index).setCompetente(true);
+			}
 			else
 				this.abilita.get(index).setSecond(getModifier(abl.getStat()));
 		}
@@ -152,7 +159,10 @@ public class Personaggio {
 		for(String str : Personaggio.caratteristicheDisponibili) {
 			int index = this.tiriSalvezza.indexOf(new Pair<String, Integer>(str, 0));
 			if(salvList.contains(str))
+			{
 				this.tiriSalvezza.get(index).setSecond(getModifier(str) + bonusCompetenza);
+				this.tiriSalvezza.get(index).setCompetente(true);
+			}
 			else
 				this.tiriSalvezza.get(index).setSecond(getModifier(str));
 		}
@@ -161,4 +171,33 @@ public class Personaggio {
 	public void setCA() {
 		this.CA = 10 + getModifier("destrezza");
 	}
+	
+	public void setIniziativa() {
+		this.iniziativa = getModifier("destrezza");
+	}
+
+	public Classe getClasse() {
+		return classe;
+	}
+
+	public void setClasse(Classe classe) {
+		this.classe = classe;
+	}
+
+	public Razza getRazza() {
+		return razza;
+	}
+
+	public int getCA() {
+		return CA;
+	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public int getIniziativa() {
+		return iniziativa;
+	}
+
 }

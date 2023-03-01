@@ -88,8 +88,6 @@ public class Menu {
 	public static void interagisci(Personaggio pg, Scanner input) {
 		String inputStr = "";
 		boolean error = true;
-		Razza razza;
-		Classe classe;
 		int livello = 1;
 		
 		do {
@@ -134,7 +132,9 @@ public class Menu {
 		
 		//set robe by classe
 		setStuffByClasse(input, pg);
+		//altri set indipendenti dalla classe
 		pg.setCA();
+		pg.setIniziativa();
 		
 	}
 	
@@ -155,6 +155,7 @@ public class Menu {
 		}while(error == true);
 		
 		razza = Razza.getRazzaByName(inputStr);
+		pg.setRazza(razza);
 		
 		//set caratteristiche by razza
 		for(Score bonus : razza.getBonuses()) {
@@ -225,6 +226,7 @@ public class Menu {
 		}while(error == true);
 		
 		classe = Classe.getClasseByName(inputStr);
+		pg.setClasse(classe);
 		pg.setDadiVita(classe.getDadoVita());
 		pg.setHp(classe.getBaseHP(), classe.getHpLevelUP());
 		
