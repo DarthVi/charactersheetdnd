@@ -1,20 +1,18 @@
 package classi;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
-import coompunds.Score;
-import eccezioni.InvalidChoiceException;
 import enums.Abilita;
 import enums.Classe;
 import enums.Razza;
-import userinteraction.Menu;
+import interfaces.CustomSerializable;
 
-public class Personaggio {
+public class Personaggio implements CustomSerializable {
 
 	public static final String[] caratteristicheDisponibili = {"forza", "destrezza", "costituzione", "intelligenza", "saggezza", "carisma"};
 	
@@ -40,6 +38,7 @@ public class Personaggio {
 	private int iniziativa;
 	private int bonusCompetenza;
 	private int velocita;
+	private List<List<Incantesimo>> incantesimi;
 	
 	public Personaggio(String nome) {
 		this.nome = nome;
@@ -63,6 +62,14 @@ public class Personaggio {
 			tiriSalvezza.add(new Pair<>(car, 0));
 			caratteristiche.put(car, 0);
 		}
+		
+		incantesimi = new ArrayList<>(0);
+		
+		for(int i=0; i<9; i++)
+			incantesimi.add(new ArrayList<>());
+		
+		
+		
 	}
 
 	public String getNome() {
@@ -198,6 +205,22 @@ public class Personaggio {
 
 	public int getIniziativa() {
 		return iniziativa;
+	}
+
+	public int getVelocita() {
+		return velocita;
+	}
+
+	@Override
+	public void writeToTextFile(String path) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void readFromTextFile(String path) throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
