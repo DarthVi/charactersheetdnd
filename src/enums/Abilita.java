@@ -31,8 +31,35 @@ public enum Abilita {
 		return stat;
 	}
 	
-//	public static Abilita getAbilitaByString(String nome) {
-//		
-//	}
+	public static Abilita getAbilitaByString(String nome) {
+		switch(nome) {
+			case "acrobazia":
+				return ACROBAZIA;
+			case "addestrare animali":
+				return ADDESTRARE_ANIMALI;
+			case "arcano":
+				return ARCANO;
+			case "atletica":
+				return ATLETICA;
+			case "intimidire":
+				return INTIMIDIRE;
+			case "intuizione":
+				return INTUIZIONE;
+			case "percezione":
+				return PERCEZIONE;
+			case "sopravvivenza":
+				return SOPRAVVIVENZA;
+			case "storia":
+				return STORIA;
+			case "indagare":
+				return INDAGARE;
+			case "medicina":
+				return MEDICINA;
+			case "religione":
+				return RELIGIONE;
+			default:
+				return ACROBAZIA;
+		}
+	}
 
 }

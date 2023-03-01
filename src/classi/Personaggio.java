@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import enums.Abilita;
+import enums.Background;
 import enums.Classe;
 import enums.Razza;
 import interfaces.CustomSerializable;
@@ -19,6 +20,7 @@ public class Personaggio implements CustomSerializable {
 	private String nome;
 	private Classe classe;
 	private Razza razza;
+	private Background background;
 	private int livello;
 	private String allineamento;
 	private HashMap<String, Integer> caratteristiche;
@@ -31,7 +33,7 @@ public class Personaggio implements CustomSerializable {
 	private String legami;
 	private String difetti;
 	private String[] privilegi;
-	private String[] altreCompetenze;
+	private String altreCompetenze;
 	private String[] linguaggi;
 	private String dadiVita;
 	private int hp;
@@ -68,8 +70,15 @@ public class Personaggio implements CustomSerializable {
 		for(int i=0; i<9; i++)
 			incantesimi.add(new ArrayList<>());
 		
-		
-		
+		altreCompetenze = "";
+	}
+
+	public Background getBackground() {
+		return background;
+	}
+
+	public void setBackground(Background background) {
+		this.background = background;
 	}
 
 	public String getNome() {
@@ -99,6 +108,30 @@ public class Personaggio implements CustomSerializable {
 			this.linguaggi[i + 1] = linguaggi[i];
 		}
 		setVelocita(velocita);
+	}
+	
+	public void aggiungiEquipaggiamento(String equip) {
+		if(this.equipaggiamento == null)
+		{
+			this.equipaggiamento = new String[1];
+			this.equipaggiamento[0] = equip;
+		}
+		else
+		{
+			String[] tempCopy = this.equipaggiamento.clone();
+			this.equipaggiamento = new String[tempCopy.length + 1];
+			for(int i=0; i<tempCopy.length; i++)
+				this.equipaggiamento[i] = tempCopy[i];
+			this.equipaggiamento[tempCopy.length] = equip;
+		}
+	}
+	
+	public void aggiungiLinguaggio(String linguaggio) {
+		String[] tempCopy = this.linguaggi.clone();
+		this.linguaggi = new String[tempCopy.length + 1];
+		for(int i=0; i<tempCopy.length; i++)
+			this.linguaggi[i] = tempCopy[i];
+		this.linguaggi[tempCopy.length] = linguaggio;
 	}
 	
 	public void incrementaCaratteristica(String caratteristica, int incremento) {
@@ -147,18 +180,29 @@ public class Personaggio implements CustomSerializable {
 			
 	}
 	
-	public void setAbilita(Abilita[] abilita) {
+	public void initAbilita(Abilita[] abilita) {
 		List<Abilita> abilList = Arrays.asList(abilita);
 		for(Abilita abl : Abilita.values()) {
 			int index = this.abilita.indexOf(new Pair<Abilita, Integer>(abl, 0));
 			if(abilList.contains(abl))
-			{
-				this.abilita.get(index).setSecond(getModifier(abl.getStat()) + bonusCompetenza);
-				this.abilita.get(index).setCompetente(true);
-			}
+				setAbilitaAggiungendoCompetenza(abl);
 			else
 				this.abilita.get(index).setSecond(getModifier(abl.getStat()));
 		}
+	}
+	
+	public Abilita[] getAbilitaConCompetenza() {
+		return (Abilita[]) abilita.stream().filter(abPair -> abPair.isCompetente()).toArray();
+	}
+	
+	public Abilita[] getAbilitaSenzaCompetenza() {
+		return (Abilita[]) abilita.stream().filter(abPair -> !abPair.isCompetente()).toArray();
+	}
+	
+	public void setAbilitaAggiungendoCompetenza(Abilita abilita) {
+		int index = this.abilita.indexOf(new Pair<Abilita, Integer>(abilita, 0));
+		this.abilita.get(index).setSecond(getModifier(abilita.getStat()) + bonusCompetenza);
+		this.abilita.get(index).setCompetente(true);
 	}
 	
 	public void setTiriSalvezza(String[] tiriSalvezza) {
@@ -209,6 +253,26 @@ public class Personaggio implements CustomSerializable {
 
 	public int getVelocita() {
 		return velocita;
+	}
+
+	public String getAltreCompetenze() {
+		return altreCompetenze;
+	}
+	
+	public List<Pair<Abilita, Integer>> getAbilita() {
+		return abilita;
+	}
+	
+	public String[] getLinguaggi() {
+		return linguaggi;
+	}
+	
+	public String[] getEquipaggiamento() {
+		return equipaggiamento;
+	}
+
+	public void aggiungiAltreCompetenze(String altreCompetenze) {
+		this.altreCompetenze += "\n" + altreCompetenze;
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package classi;
 public class Pair<T, U> {
 	private T first;
 	private U second;
-	boolean competente;
+	private boolean competente;
 	
 	public Pair(T first, U second) {
 		this.first = first;
