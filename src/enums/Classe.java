@@ -1,6 +1,6 @@
 package enums;
 
-import classi.AbilityChoice;
+import coompunds.AbilityChoice;
 
 public enum Classe {
 	GUERRIERO("guerriero", "1d10", 10, 6, new String[] {"forza", "costituzione"}, 

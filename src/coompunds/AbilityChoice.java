@@ -1,4 +1,4 @@
-package classi;
+package coompunds;
 
 import enums.Abilita;
 

@@ -1,4 +1,4 @@
-package classi;
+package coompunds;
 
 public class Pair<T, U> {
 	private T first;

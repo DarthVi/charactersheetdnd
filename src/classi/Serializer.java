@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import coompunds.Pair;
 import enums.Abilita;
 
 public class Serializer {

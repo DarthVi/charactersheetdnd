@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import coompunds.AbilityChoice;
 import coompunds.Score;
 import eccezioni.InvalidChoiceException;
 import enums.Abilita;
