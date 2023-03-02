@@ -295,11 +295,21 @@ public class Personaggio implements CustomSerializable {
 				case MAGO:
 					setMago();
 					break;
+				case CHIERICO:
+					setChierico();
+					break;
 				default:
 			}
 	}
 	
 	private void setMago() {
+		if(livello==1) {
+			spellSlots[0] = 3; //tre trucchetti
+			spellSlots[1] = 2; //due incantesimi di primo livello		
+		}
+	}
+	
+	private void setChierico() {
 		if(livello==1) {
 			spellSlots[0] = 3; //tre trucchetti
 			spellSlots[1] = 2; //due incantesimi di primo livello		
@@ -316,6 +326,10 @@ public class Personaggio implements CustomSerializable {
 						learnable.add(3);
 						learnable.add(2);
 						return learnable;
+					case CHIERICO:
+						learnable.add(3);
+						for(int i=1; i<learnable.size(); i++)
+							learnable.add(getModifier("destrezza") + livello);
 					default:
 				}
 				default:

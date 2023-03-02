@@ -286,29 +286,39 @@ public class PGBuilder {
 				incantesimiAcquisiti.add(new HashMap<>());
 			}
 			
-			//per ogni livello di incantesimo che posso imparare
-			for(int i=0; i<numSpell.size(); i++) {
-				Map<String, Incantesimo> mappa = catalogo.getIncantesimi().get(i);
-				int learnable = numSpell.get(i);
-				List<String> inc = new ArrayList<>(mappa.keySet());
-				
-				//per ogni incantesimo in singolo livello
-				for(int j=0; j<learnable; j++) {
-					do{
-						System.out.println("Scegli uno fra i seguenti incantesimi: " + String.join(", ", inc));
-						try {
-							inputStr = Menu.inserisciStringa(input, String.join("|", inc));
-							error = false;
-						} catch(InvalidChoiceException e) {
-							System.err.println("Scelta invalida, riprovare");
-							error = true;
+			switch(pg.getClasse()) {
+				case MAGO:
+					//per ogni livello di incantesimo che posso imparare
+					for(int i=0; i<numSpell.size(); i++) {
+						Map<String, Incantesimo> mappa = catalogo.getIncantesimi().get(i);
+						int learnable = numSpell.get(i);
+						List<String> inc = new ArrayList<>(mappa.keySet());
+						
+						//per ogni incantesimo in singolo livello
+						for(int j=0; j<learnable; j++) {
+							do{
+								System.out.println("Scegli uno fra i seguenti incantesimi: " + String.join(", ", inc));
+								try {
+									inputStr = Menu.inserisciStringa(input, String.join("|", inc));
+									error = false;
+								} catch(InvalidChoiceException e) {
+									System.err.println("Scelta invalida, riprovare");
+									error = true;
+								}
+							}while(error == true);
+							
+							incantesimiAcquisiti.get(i).put(inputStr, mappa.get(inputStr));
+							inc.remove(inputStr);
 						}
-					}while(error == true);
-					
-					incantesimiAcquisiti.get(i).put(inputStr, mappa.get(inputStr));
-					inc.remove(inputStr);
-				}
+					}
+					break;
+				case CHIERICO:
+					incantesimiAcquisiti = catalogo.getIncantesimiChierico();
+					break;
+				default:
+					break;
 			}
+			
 			
 			pg.setIncantesimi(incantesimiAcquisiti);
 		}

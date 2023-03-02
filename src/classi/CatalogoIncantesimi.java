@@ -7,12 +7,11 @@ import java.util.Map;
 
 public class CatalogoIncantesimi {
 	private List<Map<String,Incantesimo>> incantesimi;
+	private List<Map<String,Incantesimo>> chierico;
 	
 	public CatalogoIncantesimi() {
-		incantesimi = new ArrayList<>();
-		for(int i=0; i<9; i++) {
-			incantesimi.add(new HashMap<>());
-		}
+		incantesimi = initEnchantmentList();
+		chierico = initEnchantmentList();
 		
 		incantesimi.get(0).put("Acid Splash", new Incantesimo("Acid Splash", "conjuration", "acid", "destrezza", "V,S", "You hurl a bubble of acid. "
 				+ "Choose one creature you can see within range, or choose two creatures you can see within range that are within 5 feet of each other. "
@@ -32,11 +31,30 @@ public class CatalogoIncantesimi {
 				+ "The fire ignites any flammable objects in the area that aren’t being worn or carried."));
 		
 		incantesimi.get(1).put("Frostbite", new Incantesimo("Frostbite", "evocation", "cold", "costituzione", "V,S", "You cause numbing frost to form on one creature that you can see within range. The target must make a Constitution saving throw. On a failed save, the target takes 1d6 cold damage, and it has disadvantage on the next weapon attack roll it makes before the end of its next turn."));
+		
+		chierico.get(0).put("Guidance", new Incantesimo("Guidance", "divination", "", "", "V,S", "You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends."));
+		chierico.get(0).put("Sacred Flame", new Incantesimo("Sacred Flame", "evocation", "radiant", "destrezza", "V,S", "Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 radiant damage. The target gains no benefit from cover for this saving throw."));
+		chierico.get(0).put("Mending", new Incantesimo("Mending", "transmutation", "", "", "V,S,M (two lodestones)", "This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage."));
+		
+		chierico.get(1).put("Healing Word", new Incantesimo("Healing Word", "evocation", "", "", "V", "A creature of your choice that you can see within range regains hit points equal to 1d4 + your spellcasting ability modifier. This spell has no effect on undead or constructs."));
+		chierico.get(1).put("Cure Wounds", new Incantesimo("Cure Wounds", "evocation", "", "", "V,S", "A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs."));
 	}
 
 	public List<Map<String, Incantesimo>> getIncantesimi() {
 		return incantesimi;
 	}
 	
+	public List<Map<String, Incantesimo>> getIncantesimiChierico() {
+		return chierico;
+	}
+	
+	
+	private List<Map<String,Incantesimo>> initEnchantmentList() {
+		List<Map<String,Incantesimo>> lista = new ArrayList<>();
+		for(int i=0; i<9; i++) {
+			lista.add(new HashMap<>());
+		}
+		return lista;
+	}
 	
 }

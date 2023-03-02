@@ -1,0 +1,77 @@
+Nome: John Melbrok		Livello: 1		Allineamento: lawful good
+Punti vita: 9		dado vita: 1d8		iniziativa: 1		velocità: 9m		CA: 11
+Bonus competenza: 2		Razza: mezzelfo		Classe: chierico
+forza: 13 (1)
+destrezza: 12 (1)
+costituzione: 13 (1)
+intelligenza: 15 (2)
+saggezza: 18 (4)
+carisma: 16 (3)
+
+ABILITÀ
+acrobazia 1 (destrezza)
+addestrare animali 4 (saggezza)
+* arcano 4 (intelligenza)
+atletica 1 (forza)
+furtivita' 1 (destrezza)
+inganno 3 (carisma)
+intrattenere 3 (carisma)
+natura 2 (intelligenza)
+persuasione 3 (carisma)
+rapidita' di mano 1 (destrezza)
+intimidire 3 (carisma)
+* intuizione 6 (saggezza)
+percezione 4 (saggezza)
+sopravvivenza 4 (saggezza)
+* storia 4 (intelligenza)
+indagare 2 (intelligenza)
+* medicina 6 (saggezza)
+religione 2 (intelligenza)
+
+TIRI SALVEZZA
+forza 1
+destrezza 1
+costituzione 1
+intelligenza 2
+saggezza 4
+carisma 3
+
+LINGUAGGI E COMPETENZE
+comune
+elfico
+halfling
+draconico
+gnomesco
+
+SPELL SLOTS DISPONIBILI
+LIVELLO 0: 3		LIVELLO 1: 2		LIVELLO 2: 0		LIVELLO 3: 0		LIVELLO 4: 0		LIVELLO 5: 0		LIVELLO 6: 0		LIVELLO 7: 0		LIVELLO 8: 0		LIVELLO 9: 0
+INCANTESIMI DISPONIBILI
+LIVELLO 0:
+-		Guidance   V,S divination
+-		Sacred Flame radiant destrezza V,S evocation
+-		Mending   V,S,M (two lodestones) transmutation
+LIVELLO 1:
+-		Cure Wounds   V,S evocation
+-		Healing Word   V evocation
+LIVELLO 2:
+LIVELLO 3:
+LIVELLO 4:
+LIVELLO 5:
+LIVELLO 6:
+LIVELLO 7:
+LIVELLO 8:
+
+EQUIPAGGIAMENTO
++ A bottle of black ink, a quill, a small knife, a letter from a dead colleague posing a question you have not yet been able to answer, a set of common clothes, and a pouch containing 10 gp
+
+TRATTI CARATTERIALI
+Pronto ad aiutare gli altri
+
+IDEALI
+Proteggere il prossimo
+
+DIFETTI
+Testardo
+
+LEGAMI
+Legato alla sua citta' natale

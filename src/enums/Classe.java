@@ -64,6 +64,8 @@ public enum Classe {
 			return Classe.GUERRIERO;
 		case "mago":
 			return Classe.MAGO;
+		case "chierico":
+			return Classe.CHIERICO;
 		default:
 			return Classe.GUERRIERO;
 		}
