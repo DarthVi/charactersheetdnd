@@ -87,7 +87,14 @@ public class Serializer {
 			bw.flush();
 		}
 		
-		
+		String[] equipaggiamento = pg.getEquipaggiamento();
+		if(equipaggiamento != null) {
+			bw.write("\nEQUIPAGGIAMENTO\n");
+			for(String equip : equipaggiamento) {
+				bw.write("+ " + equip + "\n");
+			}
+			bw.flush();
+		}
 		//tratti caratteriali, ideali, difetti e legami
 		writeBGStuff(bw, pg.getTrattiCaratteriali(), "TRATTI CARATTERIALI");
 		writeBGStuff(bw, pg.getIdeali(), "IDEALI");
