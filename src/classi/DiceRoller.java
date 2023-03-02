@@ -17,7 +17,7 @@ public class DiceRoller {
 		
 		int[] sums = {Arrays.stream(a[0]).sum(), Arrays.stream(a[1]).sum(), Arrays.stream(a[2]).sum()};
 		
-		int index = getIndexOfLargest(sums);
+		int index = getIndexOfLargestElement(sums);
 //		List<Integer> list = Arrays.asList(sums);
 //		int max = Arrays.stream(sums).max().getAsInt();
 //		int index  = Arrays.asList(sums).indexOf(max);
@@ -46,15 +46,15 @@ public class DiceRoller {
 		return Arrays.stream(roll).sorted().skip(1).sum();
 	}
 	
-	private static int getIndexOfLargest( int[] array )
+	private static int getIndexOfLargestElement( int[] array )
 	{
-	  if ( array == null || array.length == 0 ) return -1; // null or empty
+	  if ( array == null || array.length == 0 ) return -1;
 
-	  int largest = 0;
+	  int indexOfLargestElement = 0;
 	  for ( int i = 1; i < array.length; i++ )
 	  {
-	      if ( array[i] > array[largest] ) largest = i;
+	      if ( array[i] > array[indexOfLargestElement] ) indexOfLargestElement = i;
 	  }
-	  return largest; // position of the first largest found
+	  return indexOfLargestElement;
 	}
 }
