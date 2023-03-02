@@ -95,6 +95,8 @@ public class Menu {
 		PGBuilder.setBackground(input, pg);
 		//altri set indipendenti dalla classe
 		PGBuilder.setInitiativeAndCA(pg);
+		//set caster (se la classe lo permette)
+		PGBuilder.setCaster(input, pg);
 		
 	}
 }

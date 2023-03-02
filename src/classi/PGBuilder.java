@@ -2,7 +2,9 @@ package classi;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import coompunds.Score;
@@ -43,6 +45,17 @@ public class PGBuilder {
 		System.out.println("Lancio dei dadi per determinare il set di score da usare");
 		int[] scores = DiceRoller.chooseArrayWithHighestScore();
 		List<String> caratteristiche = new ArrayList<>(Arrays.asList(Personaggio.caratteristicheDisponibili));
+		
+		System.out.println("Questi sono i punteggi disponibili");
+		System.out.print("[");
+		for(int i=0; i<scores.length; i++)
+		{
+			if(i==0)
+				System.out.print(scores[i]);
+			else
+				System.out.print(" " + scores[i]);
+		}
+		System.out.print("]\n");
 		
 		for(int score : scores) {
 			System.out.println("Scegliere dove piazzare questo numero: " + score);
@@ -109,15 +122,21 @@ public class PGBuilder {
 		
 		//set linguaggi e velocita
 		String[] linguaggi = razza.getLinguaggi();
-		String[] nuoviLinguaggiDaAggiungere = scegliLinguaggi(input, linguaggi);
+		String[] nuoviLinguaggiDaAggiungere = scegliLinguaggi(input, linguaggi, null);
 		pg.setAttributiByRazza(nuoviLinguaggiDaAggiungere, razza.getVelocita());
 	}
 	
-	public static String[] scegliLinguaggi(Scanner input, String[] linguaggi) {
+	public static String[] scegliLinguaggi(Scanner input, String[] linguaggi, String[] linguaggiGiaImparati) {
 		String inputStr = "";
 		boolean error = true;
 		List<String> langDisp = new ArrayList<>(Arrays.asList(Razza.linguaggiDisponibili));
+		//rimuovo il comune (lo imparano tutti di default)
 		langDisp.remove("comune");
+		//rimuovo i linguaggi gia imparati
+		if(linguaggiGiaImparati != null) {
+			for(String lang : linguaggiGiaImparati)
+				langDisp.remove(lang);
+		}
 		for(String lang : linguaggi) {
 			langDisp.remove(lang);
 		}
@@ -239,15 +258,60 @@ public class PGBuilder {
 				pg.setAbilitaAggiungendoCompetenza(background.getAbilita()[i]);
 		}
 		
+		String[] linguaggiGiaImparati = pg.getLinguaggi();
 		//set linguaggi aggiuntivi
 		String[] linguaggiAggiuntivi = background.getLinguaggi();
-		linguaggiAggiuntivi = scegliLinguaggi(input, linguaggiAggiuntivi);
+		linguaggiAggiuntivi = scegliLinguaggi(input, linguaggiAggiuntivi, linguaggiGiaImparati);
 		
 		for(String lang : linguaggiAggiuntivi)
 			pg.aggiungiLinguaggio(lang);
 		
 		pg.aggiungiAltreCompetenze(background.bonusAttrezzi());
 		pg.aggiungiEquipaggiamento(background.getEquipaggiamento());
+	}
+	
+	public static void setCaster(Scanner input, Personaggio pg) {
+		if(pg.getClasse().isCaster())
+		{
+			String inputStr = "";
+			boolean error = true;
+			pg.setSpellSlot();
+			CatalogoIncantesimi catalogo = new CatalogoIncantesimi();
+			
+			List<Integer> numSpell = pg.getLearnableSpells();
+			List<Map<String, Incantesimo>> incantesimiAcquisiti = new ArrayList<>();
+			
+			for(@SuppressWarnings("unused") Integer _i : numSpell) {
+				incantesimiAcquisiti.add(new HashMap<>());
+			}
+			
+			//per ogni livello di incantesimo che posso imparare
+			for(int i=0; i<numSpell.size(); i++) {
+				Map<String, Incantesimo> mappa = catalogo.getIncantesimi().get(i);
+				int learnable = numSpell.get(i);
+				List<String> inc = new ArrayList<>(mappa.keySet());
+				
+				//per ogni incantesimo in singolo livello
+				for(int j=0; j<learnable; j++) {
+					do{
+						System.out.println("Scegli uno fra i seguenti incantesimi: " + String.join(", ", inc));
+						try {
+							inputStr = Menu.inserisciStringa(input, String.join("|", inc));
+							error = false;
+						} catch(InvalidChoiceException e) {
+							System.err.println("Scelta invalida, riprovare");
+							error = true;
+						}
+					}while(error == true);
+					
+					incantesimiAcquisiti.get(i).put(inputStr, mappa.get(inputStr));
+					inc.remove(inputStr);
+				}
+			}
+			
+			pg.setIncantesimi(incantesimiAcquisiti);
+		}
+		
 	}
 	
 	public static void setInitiativeAndCA(Personaggio pg) {

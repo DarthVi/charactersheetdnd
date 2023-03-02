@@ -15,6 +15,11 @@ import interfaces.CustomSerializable;
 
 public class Personaggio implements CustomSerializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7230413728578596321L;
+
 	public static final String[] caratteristicheDisponibili = {"forza", "destrezza", "costituzione", "intelligenza", "saggezza", "carisma"};
 	
 	private String nome;
@@ -23,7 +28,7 @@ public class Personaggio implements CustomSerializable {
 	private Background background;
 	private int livello;
 	private String allineamento;
-	private HashMap<String, Integer> caratteristiche;
+	private Map<String, Integer> caratteristiche;
 	private List<Pair<Abilita, Integer>> abilita;
 	private List<Pair<String, Integer>> tiriSalvezza;
 	private int CA;
@@ -40,7 +45,8 @@ public class Personaggio implements CustomSerializable {
 	private int iniziativa;
 	private int bonusCompetenza;
 	private int velocita;
-	private List<List<Incantesimo>> incantesimi;
+	private List<Map<String, Incantesimo>> incantesimi;
+	private int[] spellSlots;
 	
 	public Personaggio(String nome) {
 		this.nome = nome;
@@ -67,8 +73,11 @@ public class Personaggio implements CustomSerializable {
 		
 		incantesimi = new ArrayList<>(0);
 		
-		for(int i=0; i<9; i++)
-			incantesimi.add(new ArrayList<>());
+		for(int i=0; i<9; i++) {
+			incantesimi.add(new HashMap<>());
+		}
+		
+		spellSlots = new int[9];
 		
 		altreCompetenze = "";
 	}
@@ -142,9 +151,8 @@ public class Personaggio implements CustomSerializable {
 		this.velocita = velocita;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public Map<String, Integer> getCaratteristiche() {
-		return (Map<String, Integer>) this.caratteristiche.clone();
+		return this.caratteristiche;
 	}
 	
 	public void setDadiVita(String dado) {
@@ -167,6 +175,10 @@ public class Personaggio implements CustomSerializable {
 			bonusCompetenza = 5;
 		else
 			bonusCompetenza = 6;
+	}
+	
+	public int getLivello() {
+		return livello;
 	}
 	
 	public void setHp(int baseHp, int incremento) {
@@ -272,7 +284,49 @@ public class Personaggio implements CustomSerializable {
 	}
 
 	public void aggiungiAltreCompetenze(String altreCompetenze) {
-		this.altreCompetenze += "\n" + altreCompetenze;
+		if(this.altreCompetenze.isEmpty())
+			this.altreCompetenze = altreCompetenze;
+		else
+			this.altreCompetenze += " - " + altreCompetenze;
+	}
+	
+	public void setSpellSlot() {
+		if(classe.isCaster())
+			switch(classe) {
+				case MAGO:
+					setMago();
+					break;
+				default:
+			}
+	}
+	
+	private void setMago() {
+		if(livello==1) {
+			spellSlots[0] = 3; //tre trucchetti
+			spellSlots[1] = 2; //due incantesimi di primo livello		
+		}
+	}
+	
+	public List<Integer> getLearnableSpells() {
+		List<Integer> learnable = new ArrayList<>(0);
+		
+		switch(livello) {
+			case 1:
+				switch(classe) {
+					case MAGO:
+						learnable.add(3);
+						learnable.add(2);
+						return learnable;
+					default:
+				}
+				default:
+		}
+		
+		return learnable;
+	}
+	
+	public void setIncantesimi(List<Map<String, Incantesimo>> incantesimi) {
+		this.incantesimi = incantesimi;
 	}
 
 	@Override
@@ -286,5 +340,13 @@ public class Personaggio implements CustomSerializable {
 		// TODO Auto-generated method stub
 		
 	}
+	
+//	private void writeObject(ObjectOutputStream oos) throws IOException {
+//		//TODO:
+//	}
+//	
+//	private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+//		 //TODO:
+//	}
 
 }
