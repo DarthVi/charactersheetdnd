@@ -299,7 +299,7 @@ public class PGBuilder {
 						//per ogni incantesimo in singolo livello
 						for(int j=0; j<learnable; j++) {
 							do{
-								System.out.println("Scegli uno fra i seguenti incantesimi: " + String.join(", ", inc));
+								System.out.println("Scegli uno fra i seguenti incantesimi di livello :" + i + ": " + String.join(", ", inc));
 								try {
 									inputStr = Menu.inserisciStringa(input, String.join("|", inc));
 									error = false;
