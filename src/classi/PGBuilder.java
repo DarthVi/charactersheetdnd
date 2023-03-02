@@ -314,6 +314,38 @@ public class PGBuilder {
 		
 	}
 	
+	public static void setAllineamento(Scanner input, Personaggio pg) {
+		String[] regexLaw = {"lawful", "neutral", "chaotic"};
+		String[] regexMoral = {"good", "neutral", "evil"};
+		String stringLaw = "";
+		String stringMoral = "";
+		boolean error;
+		
+		do{
+			System.out.println("Inserisci il tuo allineamento sulla legge: " + String.join(" ", regexLaw));
+			try {
+				stringLaw = Menu.inserisciStringa(input, String.join("|", regexLaw));
+				error = false;
+			} catch(InvalidChoiceException e) {
+				System.err.println("Scelta invalida, riprovare");
+				error = true;
+			}
+		}while(error == true);
+		
+		do{
+			System.out.println("Inserisci il tuo allineamento sulla morale: " + String.join(" ", regexMoral));
+			try {
+				stringMoral = Menu.inserisciStringa(input, String.join("|", regexMoral));
+				error = false;
+			} catch(InvalidChoiceException e) {
+				System.err.println("Scelta invalida, riprovare");
+				error = true;
+			}
+		}while(error == true);
+		
+		pg.calcolaAllineamento(stringLaw, stringMoral);
+	}
+	
 	public static void setInitiativeAndCA(Personaggio pg) {
 		pg.setCA();
 		pg.setIniziativa();

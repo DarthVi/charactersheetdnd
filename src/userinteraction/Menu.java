@@ -97,6 +97,8 @@ public class Menu {
 		PGBuilder.setInitiativeAndCA(pg);
 		//set caster (se la classe lo permette)
 		PGBuilder.setCaster(input, pg);
+		//set allineamento
+		PGBuilder.setAllineamento(input, pg);
 		
 	}
 }

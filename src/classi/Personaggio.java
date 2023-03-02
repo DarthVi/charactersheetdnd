@@ -73,11 +73,11 @@ public class Personaggio implements CustomSerializable {
 		
 		incantesimi = new ArrayList<>(0);
 		
-		for(int i=0; i<9; i++) {
+		for(int i=0; i<10; i++) {
 			incantesimi.add(new HashMap<>());
 		}
 		
-		spellSlots = new int[9];
+		spellSlots = new int[10];
 		
 		altreCompetenze = "";
 	}
@@ -328,16 +328,42 @@ public class Personaggio implements CustomSerializable {
 	public void setIncantesimi(List<Map<String, Incantesimo>> incantesimi) {
 		this.incantesimi = incantesimi;
 	}
+	
 
-	@Override
-	public void writeToTextFile(String path) throws IOException {
-		// TODO Auto-generated method stub
-		
+	public String getAllineamento() {
+		return allineamento;
+	}
+
+	public void setAllineamento(String allineamento) {
+		this.allineamento = allineamento;
+	}
+	
+	public List<Pair<String, Integer>> getTiriSalvezza() {
+		return tiriSalvezza;
+	}
+	
+	public int getBonusCompetenza() {
+		return bonusCompetenza;
+	}
+	
+	public int[] getSpellSlots() {
+		return spellSlots;
+	}
+
+	public List<Map<String, Incantesimo>> getIncantesimi() {
+		return incantesimi;
+	}
+
+	public void calcolaAllineamento(String law, String moral) {
+		if(law.equals("neutral") && moral.equals("neutral"))
+			setAllineamento("neutral");
+		else
+			setAllineamento(law + " " + moral);
 	}
 
 	@Override
-	public void readFromTextFile(String path) throws IOException {
-		// TODO Auto-generated method stub
+	public void writeToTextFile(String path) throws IOException {
+		Serializer.serialize(path, this);
 		
 	}
 	

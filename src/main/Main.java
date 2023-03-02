@@ -1,5 +1,6 @@
 package main;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -15,6 +16,12 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		Personaggio personaggio = new Personaggio();
 		Menu.interagisci(personaggio, scanner);
+		try {
+			personaggio.writeToTextFile("./dnd_sheet.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		scanner.close();
 		
 		Map<String, Integer> caratteristiche = personaggio.getCaratteristiche();
