@@ -8,7 +8,7 @@ public enum Classe {
 					Abilita.INTUIZIONE, Abilita.PERCEZIONE, Abilita.SOPRAVVIVENZA, Abilita.STORIA}), false),
 	MAGO("mago", "1d6", 6, 4, new String[] {"intelligenza", "saggezza"}, new AbilityChoice(2, new Abilita[] {Abilita.ARCANO, 
 					Abilita.INDAGARE, Abilita.INTUIZIONE, Abilita.MEDICINA, Abilita.RELIGIONE, Abilita.STORIA}), true),
-	CHIERICO("chierico", "1d8", 8, 5, new String[] {"saggezza, carisma"}, new AbilityChoice(2, new Abilita[] {Abilita.MEDICINA, Abilita.PERSUASIONE,
+	CHIERICO("chierico", "1d8", 8, 5, new String[] {"saggezza", "carisma"}, new AbilityChoice(2, new Abilita[] {Abilita.MEDICINA, Abilita.PERSUASIONE,
 			Abilita.INTUIZIONE, Abilita.RELIGIONE, Abilita.STORIA}), true);
 	
 //	public static final String[] classiDisponibili = {"guerriero", "mago"};

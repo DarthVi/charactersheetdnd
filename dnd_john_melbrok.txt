@@ -1,46 +1,46 @@
 Nome: John Melbrok		Livello: 1		Allineamento: lawful good
-Punti vita: 9		dado vita: 1d8		iniziativa: 1		velocità: 9m		CA: 11
+Punti vita: 9		dado vita: 1d8		iniziativa: 2		velocità: 9m		CA: 12
 Bonus competenza: 2		Razza: mezzelfo		Classe: chierico
-forza: 13 (1)
-destrezza: 12 (1)
-costituzione: 13 (1)
-intelligenza: 15 (2)
-saggezza: 18 (4)
-carisma: 16 (3)
+forza: 12 (1)
+destrezza: 14 (2)
+costituzione: 12 (1)
+intelligenza: 16 (3)
+saggezza: 17 (3)
+carisma: 13 (1)
 
 ABILITÀ
-acrobazia 1 (destrezza)
-addestrare animali 4 (saggezza)
-* arcano 4 (intelligenza)
+acrobazia 2 (destrezza)
+addestrare animali 3 (saggezza)
+* arcano 5 (intelligenza)
 atletica 1 (forza)
-furtivita' 1 (destrezza)
-inganno 3 (carisma)
-intrattenere 3 (carisma)
-natura 2 (intelligenza)
-persuasione 3 (carisma)
-rapidita' di mano 1 (destrezza)
-intimidire 3 (carisma)
-* intuizione 6 (saggezza)
-percezione 4 (saggezza)
-sopravvivenza 4 (saggezza)
-* storia 4 (intelligenza)
-indagare 2 (intelligenza)
-* medicina 6 (saggezza)
-religione 2 (intelligenza)
+furtivita' 2 (destrezza)
+inganno 1 (carisma)
+intrattenere 1 (carisma)
+natura 3 (intelligenza)
+persuasione 1 (carisma)
+rapidita' di mano 2 (destrezza)
+intimidire 1 (carisma)
+* intuizione 5 (saggezza)
+percezione 3 (saggezza)
+sopravvivenza 3 (saggezza)
+* storia 5 (intelligenza)
+indagare 3 (intelligenza)
+* medicina 5 (saggezza)
+religione 3 (intelligenza)
 
 TIRI SALVEZZA
 forza 1
-destrezza 1
+destrezza 2
 costituzione 1
-intelligenza 2
-saggezza 4
-carisma 3
+intelligenza 3
+* saggezza 5
+* carisma 3
 
 LINGUAGGI E COMPETENZE
 comune
 elfico
-halfling
 draconico
+halfling
 gnomesco
 
 SPELL SLOTS DISPONIBILI
@@ -68,10 +68,10 @@ TRATTI CARATTERIALI
 Pronto ad aiutare gli altri
 
 IDEALI
-Proteggere il prossimo
+Aiutare il prossimo
 
 DIFETTI
-Testardo
+A volte testardo
 
 LEGAMI
-Legato alla sua citta' natale
+Legato alla famiglia che risiede nella citta' natale

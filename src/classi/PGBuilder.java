@@ -96,6 +96,7 @@ public class PGBuilder {
 		pg.setRazza(razza);
 		
 		//set caratteristiche by razza
+		List<String> caratteristicheDisp = new ArrayList<>(Arrays.asList(Personaggio.caratteristicheDisponibili));
 		for(Score bonus : razza.getBonuses()) {
 			if(bonus.getCaratteristica().equals("tutti"))
 				for(String car : Personaggio.caratteristicheDisponibili)
@@ -110,9 +111,10 @@ public class PGBuilder {
 				do {
 					try
 					{
-						scelta = Menu.inserisciStringa(input, String.join("|", Personaggio.caratteristicheDisponibili));
+						scelta = Menu.inserisciStringa(input, String.join("|", caratteristicheDisp));
 						error = false;
-						pg.incrementaCaratteristica(scelta, bonus.getScore());						
+						pg.incrementaCaratteristica(scelta, bonus.getScore());
+						caratteristicheDisp.remove(scelta);
 					}catch(InvalidChoiceException e) {
 						System.err.println(e.getMessage());
 						error = true;
