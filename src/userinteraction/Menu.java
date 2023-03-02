@@ -99,6 +99,10 @@ public class Menu {
 		PGBuilder.setCaster(input, pg);
 		//set allineamento
 		PGBuilder.setAllineamento(input, pg);
+		//set di legami, difetti, tratti caratteriali e ideali
+		PGBuilder.setBGStory(input, pg);
+		//salva su file chiedendo il path
+		PGBuilder.salvaSuFile(input, pg);
 		
 	}
 }

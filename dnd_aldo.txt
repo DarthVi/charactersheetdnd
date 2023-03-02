@@ -1,0 +1,60 @@
+Nome: Aldo Potter		Livello: 1		Allineamento: lawful good
+Punti vita: 7		dado vita: 1d6		iniziativa: 1		velocità: 9m		CA: 11
+Bonus competenza: 2		Razza: umano		Classe: mago
+forza: 12 (1)
+destrezza: 13 (1)
+costituzione: 13 (1)
+intelligenza: 19 (4)
+saggezza: 19 (4)
+carisma: 10 (0)
+
+ABILITÀ
+acrobazia 1 (destrezza)
+addestrare animali 4 (saggezza)
+* arcano 6 (intelligenza)
+atletica 1 (forza)
+intimidire 0 (carisma)
+intuizione 4 (saggezza)
+* percezione 6 (saggezza)
+sopravvivenza 4 (saggezza)
+* storia 6 (intelligenza)
+indagare 4 (intelligenza)
+* medicina 6 (saggezza)
+religione 4 (intelligenza)
+
+TIRI SALVEZZA
+forza 1
+destrezza 1
+costituzione 1
+* intelligenza 6
+* saggezza 6
+carisma 0
+
+LINGUAGGI E COMPETENZE
+comune
+elfico
+draconico
+halfling
+
+SPELL SLOTS DISPONIBILI
+LIVELLO 0: 3		LIVELLO 1: 2		LIVELLO 2: 0		LIVELLO 3: 0		LIVELLO 4: 0		LIVELLO 5: 0		LIVELLO 6: 0		LIVELLO 7: 0		LIVELLO 8: 0		LIVELLO 9: 0
+INCANTESIMI DISPONIBILI
+LIVELLO 0:
+-		Chill Touch necrotic  V,S necromancy
+-		Mage Hand   V,S conjuration
+-		Acid Splash acid destrezza V,S conjuration
+LIVELLO 1:
+-		Frostbite cold costituzione V,S evocation
+-		Alarm   V,S,M (a tiny bell and a piece of fine silver wire) abjuration
+
+TRATTI CARATTERIALI
+Coraggioso, ma altezzoso
+
+IDEALI
+diventare il piu' grande mago esistente
+
+DIFETTI
+Spesso ragiona per conto suo senza ascoltare i compagni
+
+LEGAMI
+Molto legato alla sua citta' natale

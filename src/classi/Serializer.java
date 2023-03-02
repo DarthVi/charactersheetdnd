@@ -87,6 +87,21 @@ public class Serializer {
 			bw.flush();
 		}
 		
+		
+		//tratti caratteriali, ideali, difetti e legami
+		writeBGStuff(bw, pg.getTrattiCaratteriali(), "TRATTI CARATTERIALI");
+		writeBGStuff(bw, pg.getIdeali(), "IDEALI");
+		writeBGStuff(bw, pg.getDifetti(), "DIFETTI");
+		writeBGStuff(bw, pg.getLegami(), "LEGAMI");
+		
+		
 		bw.close();
+	}
+	
+	public static void writeBGStuff(BufferedWriter bw, String bg, String title) throws IOException {
+		if(!bg.isEmpty()) {
+			bw.write("\n" + title + "\n");
+			bw.write(bg + "\n");
+		}
 	}
 }

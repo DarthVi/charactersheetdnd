@@ -1,5 +1,6 @@
 package classi;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -344,6 +345,40 @@ public class PGBuilder {
 		}while(error == true);
 		
 		pg.calcolaAllineamento(stringLaw, stringMoral);
+	}
+	
+	public static void setBGStory(Scanner input, Personaggio pg) {
+		String trattiCaratteriali = getStringFromPrompt("Inserisci i tratti caratteriali e dai invio per confermare", input);
+		String ideali = getStringFromPrompt("Inserisci gli ideali e dai invio", input);
+		String legami = getStringFromPrompt("Inserisci i legami e dai invio", input);
+		String difetti = getStringFromPrompt("Inserisci i difetti e dai invio", input);
+		
+		pg.setTrattiCaratteriali(trattiCaratteriali);
+		pg.setIdeali(ideali);
+		pg.setLegami(legami);
+		pg.setDifetti(difetti);
+	}
+	
+	public static void salvaSuFile(Scanner input, Personaggio pg) {
+		String filepath = getStringFromPrompt("Inserisci il path in cui memorizzare il character sheet (es. ./dnd_sheet.txt)", input);
+		
+		try {
+			pg.writeToTextFile(filepath);
+		} catch (IOException e) {
+			System.err.println("errore sul salvataggio del file: " + e.getMessage() + " " + e.getCause());
+			System.out.println("Tentativo di salvarlo in posizione di default");
+			try {
+				pg.writeToTextFile("./dnd_sheet.txt");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	public static String getStringFromPrompt(String prompt, Scanner input) {
+		System.out.println(prompt);
+		return input.nextLine();		
 	}
 	
 	public static void setInitiativeAndCA(Personaggio pg) {

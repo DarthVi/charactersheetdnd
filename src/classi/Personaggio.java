@@ -14,12 +14,7 @@ import enums.Razza;
 import interfaces.CustomSerializable;
 
 public class Personaggio implements CustomSerializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7230413728578596321L;
-
+	
 	public static final String[] caratteristicheDisponibili = {"forza", "destrezza", "costituzione", "intelligenza", "saggezza", "carisma"};
 	
 	private String nome;
@@ -37,7 +32,7 @@ public class Personaggio implements CustomSerializable {
 	private String ideali;
 	private String legami;
 	private String difetti;
-	private String[] privilegi;
+//	private String[] privilegi;
 	private String altreCompetenze;
 	private String[] linguaggi;
 	private String dadiVita;
@@ -80,6 +75,10 @@ public class Personaggio implements CustomSerializable {
 		spellSlots = new int[10];
 		
 		altreCompetenze = "";
+		ideali = "";
+		difetti = "";
+		trattiCaratteriali = "";
+		legami = "";
 	}
 
 	public Background getBackground() {
@@ -354,6 +353,38 @@ public class Personaggio implements CustomSerializable {
 		return incantesimi;
 	}
 
+	public String getTrattiCaratteriali() {
+		return trattiCaratteriali;
+	}
+
+	public void setTrattiCaratteriali(String trattiCaratteriali) {
+		this.trattiCaratteriali = trattiCaratteriali;
+	}
+
+	public String getIdeali() {
+		return ideali;
+	}
+
+	public void setIdeali(String ideali) {
+		this.ideali = ideali;
+	}
+
+	public String getLegami() {
+		return legami;
+	}
+
+	public void setLegami(String legami) {
+		this.legami = legami;
+	}
+
+	public String getDifetti() {
+		return difetti;
+	}
+
+	public void setDifetti(String difetti) {
+		this.difetti = difetti;
+	}
+
 	public void calcolaAllineamento(String law, String moral) {
 		if(law.equals("neutral") && moral.equals("neutral"))
 			setAllineamento("neutral");
@@ -366,13 +397,5 @@ public class Personaggio implements CustomSerializable {
 		Serializer.serialize(path, this);
 		
 	}
-	
-//	private void writeObject(ObjectOutputStream oos) throws IOException {
-//		//TODO:
-//	}
-//	
-//	private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
-//		 //TODO:
-//	}
 
 }
