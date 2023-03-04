@@ -5,8 +5,8 @@ import coompunds.Score;
 public enum Razza {
 	DRAGONIDE("dragonide", new Score[] {new Score("forza", 2), new Score("carisma", 1)}, new String[] {"draconico"}, 9),
 	ELFO("elfo", new Score[] {new Score("destrezza", 2)}, new String[] {"elfico"}, 9),
-	GNOMO("gnomo", new Score[] {new Score("intelligenza", 2)}, new String[] {"gnomesco"}, 7),
-	HALFLING("halfling", new Score[] {new Score("destrezza", 2)}, new String[] {"halfling"}, 7),
+	GNOMO("gnomo", new Score[] {new Score("intelligenza", 2)}, new String[] {"gnomesco"}, 7.5f),
+	HALFLING("halfling", new Score[] {new Score("destrezza", 2)}, new String[] {"halfling"}, 7.5f),
 	MEZZELFO("mezzelfo", new Score[] {new Score("carisma", 2), new Score("scelta", 1), new Score("scelta", 1)}, new String[] {"elfico", "scelta"}, 9),
 	UMANO("umano", new Score[] {new Score("tutti", 1)}, new String[] {"scelta"}, 9);
 	
@@ -15,9 +15,9 @@ public enum Razza {
 	private String nome;
 	private Score[] bonuses;
 	private String[] linguaggi;
-	private int velocita;
+	private float velocita;
 	
-	private Razza(String nome, Score[] bonuses, String[] linguaggi, int velocita) {
+	private Razza(String nome, Score[] bonuses, String[] linguaggi, float velocita) {
 		this.nome = nome;
 		this.bonuses = bonuses;
 		this.linguaggi = linguaggi;
@@ -36,7 +36,7 @@ public enum Razza {
 		return linguaggi;
 	}
 
-	public int getVelocita() {
+	public float getVelocita() {
 		return velocita;
 	}
 	

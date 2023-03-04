@@ -40,7 +40,7 @@ public class Personaggio implements CustomSerializable {
 	private int hp;
 	private int iniziativa;
 	private int bonusCompetenza;
-	private int velocita;
+	private float velocita;
 	private List<Map<String, Incantesimo>> incantesimi;
 	private int[] spellSlots;
 	
@@ -110,7 +110,7 @@ public class Personaggio implements CustomSerializable {
 		this.razza = razza;
 	}
 	
-	public void setAttributiByRazza(String[] linguaggi, int velocita) {	
+	public void setAttributiByRazza(String[] linguaggi, float velocita) {	
 		this.linguaggi = new String[linguaggi.length + 1];
 		this.linguaggi[0] = "comune";
 		for(int i=0; i<linguaggi.length; i++) {
@@ -147,7 +147,7 @@ public class Personaggio implements CustomSerializable {
 		caratteristiche.put(caratteristica, caratteristiche.get(caratteristica) + incremento);
 	}
 	
-	public void setVelocita(int velocita) {
+	public void setVelocita(float velocita) {
 		this.velocita = velocita;
 	}
 	
@@ -263,7 +263,7 @@ public class Personaggio implements CustomSerializable {
 		return iniziativa;
 	}
 
-	public int getVelocita() {
+	public float getVelocita() {
 		return velocita;
 	}
 
